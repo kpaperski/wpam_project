@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Korki z matmy</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Karol Pąperski</string>
+    <string name="nav_header_subtitle">karolpaperski1@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_new_student">Dodaj nowego ucznia</string>
+    <string name="action_list_users">Wyświetl listę użytkowników</string>
+    <string name="action_new_lesson">Dodaj nową lekcję</string>
+    <string name="action_list_lessons">Wyświetl listę lekcji</string>
+    <string name="action_signout">Wyloguj</string>
+    <string name="action_settings">Ustawienia</string>
+
+    <string name="auth_welcome">Ciekawa matma</string>
+    <string name="login">Zaloguj się !!!</string>
+    <string name="login_with_google">Zaloguj się z Google</string>
+    <string name="menu_home">Informacje ogólne</string>
+    <string name="menu_notices">Ogłoszenia</string>
+    <string name="menu_homework">Praca domowa</string>
+    <string name="menu_marks">Oceny</string>
+    <string name="edit_address">Edytuj dane</string>
+    <string name="add_user">Dodaj ucznia</string>
+    <string name="add_lesson">Dodaj lekcję</string>
+    <string name="lesson_list">Lista lekcji</string>
+    <string name="user_list">Lista użytkowników</string>
+    <string name="button_edit">EDYTUJ</string>
+    <string name="button_add">DODAJ</string>
+    <string name="button_cancel">Anuluj</string>
+    <string name="homework_button_add">Oddaj pracę</string>
+    <string name="homework_button_details">Szczegóły</string>
+    <string name="text_home_welcome">Witaj Karol!</string>
+    <string name="text_home_yl">Twoje korepetycje:</string>
+    <string name="text_home_address">Kontakt do korepetytora:</string>
+    <string name="hint_name">Imię i nazwisko</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_phone">Telefon</string>
+    <string name="hint_name_lesson">Nazwa lekcji</string>
+    <string name="hint_name_day">Dzień</string>
+    <string name="hint_name_hour_start">Godzina rozpoczęcia</string>
+    <string name="hint_name_hour_end">Godzina zakończenia</string>
+    <string name="home_second">Home Second</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <array name="WeeksDay">
+        <item>Wybierz dzień...</item>
+        <item>Poniedziałek</item>
+        <item>Wtorek</item>
+        <item>Środa</item>
+        <item>Czwartek</item>
+        <item>Piątek</item>
+        <item>Sobota</item>
+        <item>Niedziela</item>
+    </array>
+</resources>

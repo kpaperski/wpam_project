@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <action
+        android:id="@+id/action_to_AddUser"
+        app:destination="@id/nav_addUser" />
+    <action
+        android:id="@+id/action_to_AddLessons"
+        app:destination="@id/nav_addLesson" />
+    <action
+        android:id="@+id/action_to_LessonList"
+        app:destination="@id/nav_lessonList" />
+
+    <action
+        android:id="@+id/action_to_UserList"
+        app:destination="@id/nav_userList" />
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.wpam.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_EditAddress"
+            app:destination="@id/nav_editAddress" />
+        <action
+            android:id="@+id/action_HomeFragment_to_AddUser"
+            app:destination="@id/nav_addUser" />
+        <action
+            android:id="@+id/action_to_HomeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_lessonList"
+        android:name="com.example.wpam.ui.lessonList.LessonListFragment"
+        android:label="@string/lesson_list"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/action_to_HomeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_userList"
+        android:name="com.example.wpam.ui.userList.UserListFragment"
+        android:label="@string/user_list"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/action_to_HomeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_editAddress"
+        android:name="com.example.wpam.ui.editAddress.EditAddressFragment"
+        android:label="@string/edit_address"
+        tools:layout="@layout/fragment_edit_address">
+
+        <action
+            android:id="@+id/action_EditAddress_to_HomeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_addUser"
+        android:name="com.example.wpam.ui.addUser.AddUserFragment"
+        android:label="@string/add_user"
+        tools:layout="@layout/fragment_edit_address">
+
+    <action
+        android:id="@+id/action_AddUser_to_HomeFragment"
+        app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_addLesson"
+        android:name="com.example.wpam.ui.editLessons.EditLessonsFragment"
+        android:label="@string/add_lesson"
+        tools:layout="@layout/fragment_edit_address">
+
+        <action
+            android:id="@+id/action_AddLesson_to_HomeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/nav_home_second"-->
+<!--        android:name="com.example.wpam.ui.home.HomeSecondFragment"-->
+<!--        android:label="@string/home_second"-->
+<!--        tools:layout="@layout/fragment_home_second">-->
+<!--        <action-->
+<!--            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"-->
+<!--            app:destination="@id/nav_home" />-->
+
+<!--        <argument-->
+<!--            android:name="myArg"-->
+<!--            app:argType="string" />-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/nav_notices"
+        android:name="com.example.wpam.ui.notices.NoticesFragment"
+        android:label="@string/menu_notices"
+        tools:layout="@layout/fragment_notices" />
+
+    <fragment
+        android:id="@+id/nav_homework"
+        android:name="com.example.wpam.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_homework"
+        tools:layout="@layout/fragment_homework" />
+
+    <fragment
+        android:id="@+id/nav_marks"
+        android:name="com.example.wpam.ui.marks.MarksFragment"
+        android:label="@string/menu_marks"
+        tools:layout="@layout/fragment_marks" />
+</navigation>

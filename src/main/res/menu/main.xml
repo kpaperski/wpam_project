@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_new_student"
+        android:orderInCategory="100"
+        android:title="@string/action_new_student"
+        android:onClick="click"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_list_users"
+        android:orderInCategory="100"
+        android:title="@string/action_list_users"
+        android:onClick="click"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_new_lesson"
+        android:orderInCategory="100"
+        android:title="@string/action_new_lesson"
+        android:onClick="click"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_list_lessons"
+        android:orderInCategory="100"
+        android:title="@string/action_list_lessons"
+        android:onClick="click"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_signout"
+        android:orderInCategory="100"
+        android:title="@string/action_signout"
+        android:onClick="click"
+        app:showAsAction="never" />
+</menu>
