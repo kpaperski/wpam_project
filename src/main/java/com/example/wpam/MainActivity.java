@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_notices, R.id.nav_homework, R.id.nav_marks, R.id.nav_editAddress)
+                R.id.nav_home, R.id.nav_notices, R.id.nav_homework, R.id.nav_marks, R.id.nav_marks_teacher, R.id.nav_editAddress)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -61,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
         textUsrName.setText(usrName);
         textUsrEmail.setText(usrEmail);
+
+        if(usrEmail.equals(Consts.TEACHER_EMAIL)){
+            menu.findItem(R.id.nav_marks).setVisible(false);
+            menu.findItem(R.id.nav_messages).setVisible(false);
+            menu.findItem(R.id.nav_homework).setVisible(false);
+            menu.findItem(R.id.nav_drive).setVisible(false);
+        } else {
+            menu.findItem(R.id.nav_marks_teacher).setVisible(false);
+            menu.findItem(R.id.nav_messages_teacher).setVisible(false);
+            menu.findItem(R.id.nav_homework_teacher).setVisible(false);
+            menu.findItem(R.id.nav_drive_teacher).setVisible(false);
+        }
     }
 
     @Override

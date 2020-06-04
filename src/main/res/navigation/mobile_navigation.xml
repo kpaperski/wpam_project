@@ -14,7 +14,6 @@
     <action
         android:id="@+id/action_to_LessonList"
         app:destination="@id/nav_lessonList" />
-
     <action
         android:id="@+id/action_to_UserList"
         app:destination="@id/nav_userList" />
@@ -108,14 +107,78 @@
         tools:layout="@layout/fragment_notices" />
 
     <fragment
+        android:id="@+id/nav_messages"
+        android:name="com.example.wpam.ui.messages.MessagesFragment"
+        android:label="@string/menu_messages"
+        tools:layout="@layout/fragment_list" >
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_messages_teacher"
+        android:name="com.example.wpam.ui.studentListMessages.StudentListMessagesFragment"
+        android:label="@string/menu_messages"
+        tools:layout="@layout/fragment_list">
+
+        <action android:id="@+id/action_StudentList_to_Messages"
+            app:destination="@id/nav_messages" />
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_homework"
-        android:name="com.example.wpam.ui.slideshow.SlideshowFragment"
+        android:name="com.example.wpam.ui.homeworks.HomeworksFragment"
         android:label="@string/menu_homework"
-        tools:layout="@layout/fragment_homework" />
+        tools:layout="@layout/fragment_notices">
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_homework_teacher"
+        android:name="com.example.wpam.ui.studentListHomeworks.StudentListHomeworksFragment"
+        android:label="@string/menu_homework"
+        tools:layout="@layout/fragment_list">
+
+        <action android:id="@+id/action_StudentList_to_Homeworks"
+            app:destination="@id/nav_homework" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_marks"
         android:name="com.example.wpam.ui.marks.MarksFragment"
         android:label="@string/menu_marks"
-        tools:layout="@layout/fragment_marks" />
+        tools:layout="@layout/fragment_marks" >
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_marks_teacher"
+        android:name="com.example.wpam.ui.studentListMarks.StudentListMarksFragment"
+        android:label="@string/menu_marks"
+        tools:layout="@layout/fragment_list">
+
+        <action android:id="@+id/action_StudentList_to_Marks"
+            app:destination="@id/nav_marks" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_drive"
+        android:name="com.example.wpam.ui.drive.DriveFragment"
+        android:label="@string/menu_drive"
+        tools:layout="@layout/fragment_notices" >
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_drive_teacher"
+        android:name="com.example.wpam.ui.studentListDrive.StudentListDriveFragment"
+        android:label="@string/menu_drive"
+        tools:layout="@layout/fragment_list">
+
+        <action android:id="@+id/action_StudentList_to_Drive"
+            app:destination="@id/nav_drive" />
+    </fragment>
 </navigation>
