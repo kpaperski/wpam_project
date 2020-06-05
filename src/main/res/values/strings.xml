@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Korki z matmy</string>
+    <string name="app_name">Matma</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Karol Pąperski</string>
@@ -28,10 +28,14 @@
     <string name="edit_address">Edytuj dane</string>
     <string name="add_user">Dodaj ucznia</string>
     <string name="add_lesson">Dodaj lekcję</string>
+    <string name="add_homework">Dodaj pracę domową</string>
     <string name="lesson_list">Lista lekcji</string>
     <string name="user_list">Lista użytkowników</string>
+    <string name="hint_file_name">Podaj nazwę pliku</string>
+    <string name="add_file">DOŁĄCZ PLIK</string>
     <string name="button_edit">EDYTUJ</string>
     <string name="button_add">DODAJ</string>
+    <string name="button_upload">DODAJ PLIK</string>
     <string name="button_cancel">Anuluj</string>
     <string name="homework_button_add">Oddaj pracę</string>
     <string name="homework_button_details">Szczegóły</string>
@@ -41,6 +45,9 @@
     <string name="hint_name">Imię i nazwisko</string>
     <string name="hint_notice_name">Tytuł ogłoszenia</string>
     <string name="hint_notice_text">Treść ogłoszenia</string>
+    <string name="hint_messages_text">Treść komunikatu</string>
+    <string name="hint_homework_title">Tytuł pracy domowej</string>
+    <string name="hint_homework_description">Szczegóły</string>
     <string name="hint_marks_name">Kategoria oceny</string>
     <string name="hint_marks_points">Liczba punktów</string>
     <string name="hint_marks_maxpoints">Maksymalna liczba punktów</string>

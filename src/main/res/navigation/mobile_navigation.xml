@@ -133,6 +133,8 @@
         <argument
             android:name="userEmail"
             app:argType="string" />
+        <action android:id="@+id/action_Homework_to_AddHomework"
+            app:destination="@id/nav_addHomework" />
     </fragment>
     <fragment
         android:id="@+id/nav_homework_teacher"
@@ -141,6 +143,17 @@
         tools:layout="@layout/fragment_list">
 
         <action android:id="@+id/action_StudentList_to_Homeworks"
+            app:destination="@id/nav_homework" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_addHomework"
+        android:name="com.example.wpam.ui.addHomework.AddHomeworkFragment"
+        android:label="@string/add_homework"
+        tools:layout="@layout/fragment_edit_homework">
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+        <action android:id="@+id/action_AddHomework_to_Homework"
             app:destination="@id/nav_homework" />
     </fragment>
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.messages.MessagesFragment">
+    tools:context=".ui.addHomework.AddHomeworkFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,19 +18,18 @@
             android:paddingRight="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editMessage_input_layout_text"
+                android:id="@+id/uploadFile_input_layout_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/editMessage_input_text"
+                    android:id="@+id/uploadFile_input_name"
                     android:layout_width="match_parent"
-                    android:layout_height="133dp"
+                    android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/hint_messages_text"
-                    android:inputType="textMultiLine" />
+                    android:hint="@string/hint_file_name" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TableLayout
@@ -44,12 +43,12 @@
                     android:gravity="center">
 
                     <Button
-                        android:id="@+id/btn_edit_message"
+                        android:id="@+id/btn_add_file"
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
-                        android:text="@string/button_add"
+                        android:text="@string/add_file"
                         android:textColor="#FFFFFF"
                         android:textSize="15sp" />
                 </TableRow>
