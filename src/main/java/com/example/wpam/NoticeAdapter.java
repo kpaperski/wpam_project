@@ -58,8 +58,7 @@ public class NoticeAdapter extends ArrayAdapter<Notice> implements View.OnClickL
                 showUpdateDialog(dataModel.getNoticeID(), dataModel.getNoticeName(), dataModel.getNoticeText());
                 break;
             case R.id.item_remove:
-                databaseNotice.child(dataModel.getNoticeID()).removeValue();
-                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                showDeleteDialog(dataModel.getNoticeID());
                 break;
         }
     }
@@ -158,5 +157,40 @@ public class NoticeAdapter extends ArrayAdapter<Notice> implements View.OnClickL
         Notice notice = new Notice(id, name, text, time);
         databaseNotice.child(id).setValue(notice);
         return true;
+    }
+
+    private void showDeleteDialog(final String noticeID) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        final View dialogView = inflater.inflate(R.layout.dialog_receipt, null);
+
+        dialogBuilder.setView(dialogView);
+
+        Button btnDelete = (Button) dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_);
+
+        dialogBuilder.setTitle("Usuwanie ogłoszenia");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseNotice.child(noticeID).removeValue();
+                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 }

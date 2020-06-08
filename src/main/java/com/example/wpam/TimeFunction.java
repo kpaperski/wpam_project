@@ -16,7 +16,8 @@ public class TimeFunction {
         String time = Integer.toString(currentTime.getYear());
         int month = currentTime.getMonth();
         time = addZero(time, month);
-        int day = currentTime.getDay();
+        int day = currentTime.getDate();
+        System.out.println(day);
         time = addZero(time, day);
         int hour = currentTime.getHours();
         time = addZero(time, hour);

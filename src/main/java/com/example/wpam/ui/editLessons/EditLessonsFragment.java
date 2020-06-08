@@ -1,10 +1,12 @@
 package com.example.wpam.ui.editLessons;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -32,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class EditLessonsFragment extends Fragment {
 
@@ -51,6 +54,7 @@ public class EditLessonsFragment extends Fragment {
         return new EditLessonsFragment();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -185,6 +189,7 @@ public class EditLessonsFragment extends Fragment {
         return add_lesson;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void addDaySpinnerItem() {
         String[] days = new String[]{
                 "Wybierz dzień...",
@@ -201,7 +206,7 @@ public class EditLessonsFragment extends Fragment {
 
         // Initializing an ArrayAdapter
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                getContext(),R.layout.support_simple_spinner_dropdown_item,daysList){
+                Objects.requireNonNull(getContext()),R.layout.support_simple_spinner_dropdown_item,daysList){
             @Override
             public boolean isEnabled(int position){
                 if(position == 0)

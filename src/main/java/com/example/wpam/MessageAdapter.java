@@ -51,8 +51,7 @@ public class MessageAdapter extends ArrayAdapter<MyMessage> implements View.OnCl
         switch (v.getId())
         {
             case R.id.item_remove:
-                databaseMessages.child(dataModel.getMsgID()).removeValue();
-                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                showDeleteDialog(dataModel.getMsgID());
                 break;
         }
     }
@@ -99,5 +98,40 @@ public class MessageAdapter extends ArrayAdapter<MyMessage> implements View.OnCl
         viewHolder.delete.setTag(position);
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    private void showDeleteDialog(final String msgID) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        final View dialogView = inflater.inflate(R.layout.dialog_receipt, null);
+
+        dialogBuilder.setView(dialogView);
+
+        Button btnDelete = (Button) dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_);
+
+        dialogBuilder.setTitle("Usuwanie wiadomości");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseMessages.child(msgID).removeValue();
+                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 }

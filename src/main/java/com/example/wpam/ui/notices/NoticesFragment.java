@@ -1,6 +1,7 @@
 package com.example.wpam.ui.notices;
 
 import android.app.AlertDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.wpam.Consts;
@@ -32,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class NoticesFragment extends Fragment {
 
@@ -71,6 +74,7 @@ public class NoticesFragment extends Fragment {
         super.onStart();
 
         databaseNotices.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 noticesList.clear();
@@ -101,6 +105,7 @@ public class NoticesFragment extends Fragment {
         final EditText addNoticeName = (EditText) dialogView.findViewById(R.id.editNotice_input_name);
         final EditText addNoticeText = (EditText) dialogView.findViewById(R.id.editNotice_input_text);
         Button btnUpdate = (Button) dialogView.findViewById(R.id.btn_edit_notice);
+        btnUpdate.setText("DODAJ");
         Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_notice);
 
         dialogBuilder.setTitle("Dodawanie ogłoszenia");

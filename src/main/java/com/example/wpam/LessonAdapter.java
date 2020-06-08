@@ -65,8 +65,7 @@ public class LessonAdapter extends ArrayAdapter<Lesson> implements View.OnClickL
                 showUpdateDialog(dataModel.getLsnId(), dataModel.getLsnName(), dataModel.getLsnStartHour(), dataModel.getLsnEndHour());
                 break;
             case R.id.item_remove:
-                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
-                lessonDatabase.child(dataModel.getLsnId()).removeValue();
+                showDeleteDialog(dataModel.getLsnId());
                 break;
         }
     }
@@ -269,5 +268,39 @@ public class LessonAdapter extends ArrayAdapter<Lesson> implements View.OnClickL
         };
         spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerArrayAdapter);
+    }
+
+    private void showDeleteDialog(final String lsnID) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        final View dialogView = inflater.inflate(R.layout.dialog_receipt, null);
+
+        dialogBuilder.setView(dialogView);
+
+        Button btnDelete = (Button) dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_);
+
+        dialogBuilder.setTitle("Usuwanie lekcji");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lessonDatabase.child(lsnID).removeValue();
+                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
 }

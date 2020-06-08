@@ -53,8 +53,7 @@ public class MarkAdapter extends ArrayAdapter<Mark> implements View.OnClickListe
                 showUpdateDialog(dataModel.getMarkId(), dataModel.getMarkName(), dataModel.getMarkStudentEmail(), dataModel.getMarkPoints(), dataModel.getMarkMaxPoints(), dataModel.getMarkDetails());
                 break;
             case R.id.item_remove_m:
-                databaseMark.child(dataModel.getMarkId()).removeValue();
-                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                showDeleteDialog(dataModel.getMarkId());
                 break;
         }
     }
@@ -164,5 +163,40 @@ public class MarkAdapter extends ArrayAdapter<Mark> implements View.OnClickListe
         Mark mark = new Mark(id, name, studentEmail, points, maxpoints, percent, details, time);
         databaseMark.child(id).setValue(mark);
         return true;
+    }
+
+    private void showDeleteDialog(final String markID) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        final View dialogView = inflater.inflate(R.layout.dialog_receipt, null);
+
+        dialogBuilder.setView(dialogView);
+
+        Button btnDelete = (Button) dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_);
+
+        dialogBuilder.setTitle("Usuwanie oceny");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseMark.child(markID).removeValue();
+                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 }

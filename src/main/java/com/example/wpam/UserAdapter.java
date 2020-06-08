@@ -35,6 +35,10 @@ public class UserAdapter extends ArrayAdapter<Users> implements View.OnClickList
     Context context;
     DatabaseReference databaseUser = FirebaseDatabase.getInstance().getReference("users");
     private DatabaseReference databaseLesson = FirebaseDatabase.getInstance().getReference("lessons");
+    private DatabaseReference databaseMessages = FirebaseDatabase.getInstance().getReference("messages");
+    private DatabaseReference databaseHomeworks = FirebaseDatabase.getInstance().getReference("homeworks");
+    private DatabaseReference databaseDrive = FirebaseDatabase.getInstance().getReference("studentfiles");
+    private DatabaseReference databaseMarks = FirebaseDatabase.getInstance().getReference("marks");
 
     private static class ViewHolder {
         TextView textName;
@@ -63,8 +67,7 @@ public class UserAdapter extends ArrayAdapter<Users> implements View.OnClickList
                 showUpdateDialog(dataModel.getUsrId(), dataModel.getUsrName(), dataModel.getUsrEmail(), dataModel.getUsrEmail(), dataModel.getUsrPhone());
                 break;
             case R.id.item_remove:
-                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
-                deleteUser(dataModel);
+                showDeleteDialog(dataModel);
                 break;
         }
     }
@@ -181,6 +184,41 @@ public class UserAdapter extends ArrayAdapter<Users> implements View.OnClickList
         return true;
     }
 
+    private void showDeleteDialog(final Users dataModel) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        final View dialogView = inflater.inflate(R.layout.dialog_receipt, null);
+
+        dialogBuilder.setView(dialogView);
+
+        Button btnDelete = (Button) dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_);
+
+        dialogBuilder.setTitle("Usuwanie użytkownika");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteUser(dataModel);
+                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+    }
+
     private void deleteUser(Users dataModel) {
         Query lsnQuery = databaseLesson.orderByChild("lsnStudentEmail").equalTo(dataModel.getUsrEmail());
         lsnQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -189,6 +227,54 @@ public class UserAdapter extends ArrayAdapter<Users> implements View.OnClickList
                 for (DataSnapshot lsnSnapshot: dataSnapshot.getChildren()) {
                     Lesson oldLesson = lsnSnapshot.getValue(Lesson.class);
                     databaseLesson.child(oldLesson.getLsnId()).removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Query msgQuery = databaseMessages.orderByChild("msgStudentEmail").equalTo(dataModel.getUsrEmail());
+        msgQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot msgSnapshot: dataSnapshot.getChildren()) {
+                    MyMessage msg = msgSnapshot.getValue(MyMessage.class);
+                    databaseMessages.child(msg.getMsgID()).removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Query hwQuery = databaseHomeworks.orderByChild("hwStudEmail").equalTo(dataModel.getUsrEmail());
+        hwQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot hwSnapshot: dataSnapshot.getChildren()) {
+                    Homework hw = hwSnapshot.getValue(Homework.class);
+                    databaseHomeworks.child(hw.getHwID()).removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Query markQuery = databaseMarks.orderByChild("markStudentEmail").equalTo(dataModel.getUsrEmail());
+        markQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot markSnapshot: dataSnapshot.getChildren()) {
+                    Mark mark = markSnapshot.getValue(Mark.class);
+                    databaseMarks.child(mark.getMarkId()).removeValue();
                 }
             }
 

@@ -11,6 +11,8 @@
     <string name="action_list_lessons">Wyświetl listę lekcji</string>
     <string name="action_signout">Wyloguj</string>
     <string name="action_settings">Ustawienia</string>
+    <string name="button_delete">USUŃ</string>
+    <string name="text_receipt">Czy jesteś pewien że chcesz usunąć ten element?</string>
 
     <string name="auth_welcome">Ciekawa matma</string>
     <string name="login">Zaloguj się !!!</string>

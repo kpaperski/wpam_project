@@ -64,8 +64,7 @@ public class HomeworkAdapter extends ArrayAdapter<Homework> implements View.OnCl
                 showUpdateDialog(dataModel.getHwID(), dataModel.getHwTitle(), dataModel.getHwStudEmail(), dataModel.getHwDescription(), dataModel.getHwFileName(), dataModel.getHwFileUrl());
                 break;
             case R.id.item_remove_m:
-                databaseHW.child(dataModel.getHwID()).removeValue();
-                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                showDeleteDialog(dataModel.getHwID());
                 break;
         }
     }
@@ -178,5 +177,39 @@ public class HomeworkAdapter extends ArrayAdapter<Homework> implements View.OnCl
         Homework homework = new Homework(id, studentEmail, title, description, fileName, fileUrl, time);
         databaseHW.child(id).setValue(homework);
         return true;
+    }
+
+    private void showDeleteDialog(final String hwID) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        final View dialogView = inflater.inflate(R.layout.dialog_receipt, null);
+
+        dialogBuilder.setView(dialogView);
+
+        Button btnDelete = (Button) dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btn_cancel_);
+
+        dialogBuilder.setTitle("Usuwanie pracy domowej");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseHW.child(hwID).removeValue();
+                Toast.makeText(context, "Usunięto", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
 }
