@@ -120,8 +120,10 @@ public class DriveFragment extends Fragment {
                     String[] uploads = new String[uploadPDFList.size()];
                     for (int i = 0; i < uploads.length; i++)
                         uploads[i] = uploadPDFList.get(i).getPdfName();
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, uploads);
-                    listView.setAdapter(adapter);
+                    if (getActivity()!=null) {
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, uploads);
+                        listView.setAdapter(adapter);
+                    }
                 }
             }
             @Override

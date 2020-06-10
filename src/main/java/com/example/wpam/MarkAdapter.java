@@ -26,6 +26,7 @@ public class MarkAdapter extends ArrayAdapter<Mark> implements View.OnClickListe
     private DatabaseReference databaseMark = FirebaseDatabase.getInstance().getReference("marks");
 
     private static class ViewHolder {
+        TextView textMarkDate;
         TextView textMarkName;
         TextView textMarkPerc;
         TextView textMarkText;
@@ -74,6 +75,7 @@ public class MarkAdapter extends ArrayAdapter<Mark> implements View.OnClickListe
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_mark_item, parent, false);
+            viewHolder.textMarkDate = (TextView) convertView.findViewById(R.id.mark_date);
             viewHolder.textMarkName = (TextView) convertView.findViewById(R.id.mark_name);
             viewHolder.textMarkPerc = (TextView) convertView.findViewById(R.id.mark_perc);
             viewHolder.textMarkText = (TextView) convertView.findViewById(R.id.mark_text);
@@ -92,7 +94,7 @@ public class MarkAdapter extends ArrayAdapter<Mark> implements View.OnClickListe
             result=convertView;
         }
 
-
+        viewHolder.textMarkDate.setText(dataModel.getMarkDate());
         viewHolder.textMarkName.setText(dataModel.getMarkName());
         viewHolder.textMarkPerc.setText("Liczba punktów: " + dataModel.getMarkPoints() + "/" + dataModel.getMarkMaxPoints() + " p.      Procent: " + dataModel.getMarkPercent());
         viewHolder.textMarkText.setText(dataModel.getMarkDetails());

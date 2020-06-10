@@ -56,8 +56,10 @@ public class LessonListFragment extends Fragment {
                 for(DataSnapshot lessonSnapshot : dataSnapshot.getChildren()) {
                     Lesson lesson = lessonSnapshot.getValue(Lesson.class);
                     lessonsList.add(lesson);
-                    lessonAdapter = new LessonAdapter(lessonsList, Consts.TEACHER_EMAIL, getContext());
-                    listView.setAdapter(lessonAdapter);
+                    if (getActivity()!=null) {
+                        lessonAdapter = new LessonAdapter(lessonsList, Consts.TEACHER_EMAIL, getContext());
+                        listView.setAdapter(lessonAdapter);
+                    }
                 }
             }
             @Override

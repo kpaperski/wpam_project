@@ -5,6 +5,7 @@ public class MyMessage implements Comparable<MyMessage>{
     private String msgStudentEmail;
     private String msgAuthor;
     private String msgText;
+    private String msgDate;
     private String msgTime;
 
     public MyMessage() {
@@ -16,6 +17,7 @@ public class MyMessage implements Comparable<MyMessage>{
         this.msgAuthor = msgAuthor;
         this.msgText = msgText;
         this.msgTime = msgTime;
+        this.msgDate = TimeFunction.getDate();
     }
 
     public String getMsgID() {
@@ -36,6 +38,10 @@ public class MyMessage implements Comparable<MyMessage>{
 
     public String getMsgTime() {
         return msgTime;
+    }
+
+    public String getMsgDate() {
+        return msgDate;
     }
 
     @Override

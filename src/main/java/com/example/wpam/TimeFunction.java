@@ -28,4 +28,21 @@ public class TimeFunction {
         return time;
     }
 
+    public static String getDate() {
+        Date currentTime = Calendar.getInstance().getTime();
+        String date = "";
+        int day = currentTime.getDate();
+        date = addZero(date, day);
+        date = date + "/";
+        int month = currentTime.getMonth() + 1;
+        date = addZero(date, month);
+        date = date + "   ";
+        int hour = currentTime.getHours();
+        date = addZero(date, hour);
+        date = date + ":";
+        int min = currentTime.getMinutes();
+        date = addZero(date, min);
+        return date;
+    }
+
 }

@@ -1,18 +1,22 @@
 package com.example.wpam;
 
+import java.sql.Time;
+
 public class Notice implements Comparable<Notice> {
     private String noticeID;
     private String noticeName;
+    private String noticeDate;
     private String noticeText;
     private String noticeTime;
 
     public Notice() {}
 
-    public Notice(String noticeID, String noticeName, String noticeText, String noticeTime) {
+    public Notice(String noticeID, String noticeName, String noticeText) {
         this.noticeID = noticeID;
         this.noticeName = noticeName;
         this.noticeText = noticeText;
-        this.noticeTime = noticeTime;
+        this.noticeTime = TimeFunction.getTime();
+        this.noticeDate = TimeFunction.getDate();
     }
 
     public String getNoticeID() {
@@ -41,6 +45,10 @@ public class Notice implements Comparable<Notice> {
 
     public String getNoticeTime() {
         return noticeTime;
+    }
+
+    public String getNoticeDate() {
+        return noticeDate;
     }
 
     @Override

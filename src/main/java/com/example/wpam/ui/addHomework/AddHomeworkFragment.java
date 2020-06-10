@@ -22,9 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -116,35 +113,37 @@ public class AddHomeworkFragment extends Fragment {
                 for (UploadPDF pdf : uploadPDFList) {
                     fileNameList.add(pdf.getPdfName());
                 }
-
-                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, fileNameList) {
-                    @Override
-                    public boolean isEnabled(int position) {
-                        if (position == 0) {
-                            // Disable the first item from Spinner
-                            // First item will be use for hint
-                            return false;
-                        } else {
-                            return true;
+                if (getActivity()!=null) {
+                    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, fileNameList) {
+                        @Override
+                        public boolean isEnabled(int position) {
+                            if (position == 0) {
+                                // Disable the first item from Spinner
+                                // First item will be use for hint
+                                return false;
+                            } else {
+                                return true;
+                            }
                         }
-                    }
 
-                    @Override
-                    public View getDropDownView(int position, View convertView,
-                                                ViewGroup parent) {
-                        View view = super.getDropDownView(position, convertView, parent);
-                        TextView tv = (TextView) view;
-                        if (position == 0) {
-                            // Set the hint text color gray
-                            tv.setTextColor(Color.GRAY);
-                        } else {
-                            tv.setTextColor(Color.BLACK);
+                        @Override
+                        public View getDropDownView(int position, View convertView,
+                                                    ViewGroup parent) {
+                            View view = super.getDropDownView(position, convertView, parent);
+                            TextView tv = (TextView) view;
+                            if (position == 0) {
+                                // Set the hint text color gray
+                                tv.setTextColor(Color.GRAY);
+                            } else {
+                                tv.setTextColor(Color.BLACK);
+                            }
+                            return view;
                         }
-                        return view;
-                    }
-                };
-                spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                addHWFileName.setAdapter(spinnerArrayAdapter);
+                    };
+                    spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                    addHWFileName.setAdapter(spinnerArrayAdapter);
+                }
+
             }
 
             @Override

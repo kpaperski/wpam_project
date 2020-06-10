@@ -41,6 +41,7 @@ public class UserAdapter extends ArrayAdapter<Users> implements View.OnClickList
     private DatabaseReference databaseMarks = FirebaseDatabase.getInstance().getReference("marks");
 
     private static class ViewHolder {
+        TextView textDate;
         TextView textName;
         TextView textEmailPhone;
         ImageView edit;
@@ -88,6 +89,8 @@ public class UserAdapter extends ArrayAdapter<Users> implements View.OnClickList
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_item, parent, false);
+            viewHolder.textDate = (TextView) convertView.findViewById(R.id.date);
+            viewHolder.textDate.setVisibility(View.GONE);
             viewHolder.textName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.textEmailPhone = (TextView) convertView.findViewById(R.id.day_hour);
             viewHolder.edit = (ImageView) convertView.findViewById(R.id.item_edit);

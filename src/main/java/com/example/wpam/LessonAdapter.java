@@ -39,6 +39,7 @@ public class LessonAdapter extends ArrayAdapter<Lesson> implements View.OnClickL
     ArrayList<String> studentsName = new ArrayList<>();
 
     private static class ViewHolder {
+        TextView textDate;
         TextView textName;
         TextView textDayHour;
         ImageView edit;
@@ -86,6 +87,8 @@ public class LessonAdapter extends ArrayAdapter<Lesson> implements View.OnClickL
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_item, parent, false);
+            viewHolder.textDate = (TextView) convertView.findViewById(R.id.date);
+            viewHolder.textDate.setVisibility(View.GONE);
             viewHolder.textName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.textDayHour = (TextView) convertView.findViewById(R.id.day_hour);
             viewHolder.edit = (ImageView) convertView.findViewById(R.id.item_edit);

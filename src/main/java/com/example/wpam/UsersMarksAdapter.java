@@ -32,6 +32,7 @@ public class UsersMarksAdapter extends ArrayAdapter<Users>{
     DatabaseReference databaseUser = FirebaseDatabase.getInstance().getReference("users");
 
     private static class ViewHolder {
+        TextView textDate;
         TextView textName;
         TextView textEmail;
         ImageView edit;
@@ -59,6 +60,8 @@ public class UsersMarksAdapter extends ArrayAdapter<Users>{
             viewHolder = new UsersMarksAdapter.ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_item, parent, false);
+            viewHolder.textDate = (TextView) convertView.findViewById(R.id.date);
+            viewHolder.textDate.setVisibility(View.GONE);
             viewHolder.textName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.textEmail = (TextView) convertView.findViewById(R.id.day_hour);
             viewHolder.edit = (ImageView) convertView.findViewById(R.id.item_edit);

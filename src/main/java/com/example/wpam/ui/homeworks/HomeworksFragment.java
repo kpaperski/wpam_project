@@ -86,8 +86,10 @@ public class HomeworksFragment extends Fragment {
                     if(studentEmail.equals(homework.getHwStudEmail())) {
                         homeworkList.add(homework);
                         Collections.sort(homeworkList);
-                        markAdapter = new HomeworkAdapter(homeworkList, userEmail, getContext());
-                        listView.setAdapter(markAdapter);
+                        if (getActivity()!=null) {
+                            markAdapter = new HomeworkAdapter(homeworkList, userEmail, getContext());
+                            listView.setAdapter(markAdapter);
+                        }
                     }
                 }
             }

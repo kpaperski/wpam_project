@@ -53,8 +53,10 @@ public class UserListFragment extends Fragment {
                 for(DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     Users user = userSnapshot.getValue(Users.class);
                     usersList.add(user);
-                    userAdapter = new UserAdapter(usersList, Consts.TEACHER_EMAIL, getContext());
-                    listView.setAdapter(userAdapter);
+                    if (getActivity()!=null) {
+                        userAdapter = new UserAdapter(usersList, Consts.TEACHER_EMAIL, getContext());
+                        listView.setAdapter(userAdapter);
+                    }
                 }
             }
             @Override

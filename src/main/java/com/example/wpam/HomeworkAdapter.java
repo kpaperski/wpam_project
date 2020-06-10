@@ -30,6 +30,7 @@ public class HomeworkAdapter extends ArrayAdapter<Homework> implements View.OnCl
     private DatabaseReference databaseHW = FirebaseDatabase.getInstance().getReference("homeworks");
 
     private static class ViewHolder {
+        TextView textHWDate;
         TextView textHWTitle;
         TextView textHWDescription;
         TextView textHWFile;
@@ -85,6 +86,7 @@ public class HomeworkAdapter extends ArrayAdapter<Homework> implements View.OnCl
             viewHolder = new HomeworkAdapter.ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_mark_item, parent, false);
+            viewHolder.textHWDate = (TextView) convertView.findViewById(R.id.mark_date);
             viewHolder.textHWTitle = (TextView) convertView.findViewById(R.id.mark_name);
             viewHolder.textHWDescription = (TextView) convertView.findViewById(R.id.mark_perc);
             viewHolder.textHWFile = (TextView) convertView.findViewById(R.id.mark_text);
@@ -105,6 +107,7 @@ public class HomeworkAdapter extends ArrayAdapter<Homework> implements View.OnCl
         }
 
 
+        viewHolder.textHWDate.setText(dataModel.getHwDate());
         viewHolder.textHWTitle.setText(dataModel.getHwTitle());
         viewHolder.textHWDescription.setText(dataModel.getHwDescription());
         if(dataModel.getHwFileName() == null) {

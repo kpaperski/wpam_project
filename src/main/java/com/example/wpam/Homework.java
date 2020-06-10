@@ -7,6 +7,7 @@ public class Homework implements Comparable<Homework>{
     private String hwDescription;
     private String hwFileName;
     private String hwFileUrl;
+    private String hwDate;
     private String hwTime;
 
     public Homework() {
@@ -19,7 +20,8 @@ public class Homework implements Comparable<Homework>{
         this.hwDescription = hwDescription;
         this.hwFileName = hwFileName;
         this.hwFileUrl = hwFileUrl;
-        this.hwTime = hwTime;
+        this.hwTime = TimeFunction.getTime();
+        this.hwDate = TimeFunction.getDate();
     }
 
     public String getHwID() {
@@ -48,6 +50,10 @@ public class Homework implements Comparable<Homework>{
 
     public String getHwFileUrl() {
         return hwFileUrl;
+    }
+
+    public String getHwDate() {
+        return hwDate;
     }
 
     @Override

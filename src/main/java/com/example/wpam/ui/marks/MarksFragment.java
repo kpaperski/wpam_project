@@ -88,8 +88,10 @@ public class MarksFragment extends Fragment {
                     if(studentEmail.equals(mark.getMarkStudentEmail())) {
                         marksList.add(mark);
                         Collections.sort(marksList);
-                        markAdapter = new MarkAdapter(marksList, userEmail, getContext());
-                        listView.setAdapter(markAdapter);
+                        if (getActivity()!=null) {
+                            markAdapter = new MarkAdapter(marksList, userEmail, getContext());
+                            listView.setAdapter(markAdapter);
+                        }
                     }
                 }
             }

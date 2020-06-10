@@ -117,8 +117,10 @@ public class HomeFragment extends Fragment {
                     Lesson lesson = lessonSnapshot.getValue(Lesson.class);
                     if(usrEmail.equals(Consts.TEACHER_EMAIL) || usrEmail.equals(lesson.getLsnStudentEmail()))
                         lessonsList.add(lesson);
-                    lessonAdapter = new LessonAdapter(lessonsList, usrEmail, getContext());
-                    listView.setAdapter(lessonAdapter);
+                    if (getActivity()!=null) {
+                        lessonAdapter = new LessonAdapter(lessonsList, usrEmail, getContext());
+                        listView.setAdapter(lessonAdapter);
+                    }
                 }
             }
             @Override

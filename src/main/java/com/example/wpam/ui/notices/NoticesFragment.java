@@ -83,8 +83,10 @@ public class NoticesFragment extends Fragment {
                     noticesList.add(notice);
                 }
                 Collections.sort(noticesList);
-                noticeAdapter = new NoticeAdapter(noticesList, usrEmail, getContext());
-                listView.setAdapter(noticeAdapter);
+                if (getActivity()!=null) {
+                    noticeAdapter = new NoticeAdapter(noticesList, usrEmail, getContext());
+                    listView.setAdapter(noticeAdapter);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -140,7 +142,7 @@ public class NoticesFragment extends Fragment {
     private boolean addNotice(String name, String text){
         String id = databaseNotices.push().getKey();
         String time = TimeFunction.getTime();
-        Notice notice = new Notice(id, name, text, time);
+        Notice notice = new Notice(id, name, text);
         databaseNotices.child(id).setValue(notice);
         return true;
     }

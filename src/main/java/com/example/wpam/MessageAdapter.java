@@ -27,6 +27,7 @@ public class MessageAdapter extends ArrayAdapter<MyMessage> implements View.OnCl
     private DatabaseReference databaseMessages = FirebaseDatabase.getInstance().getReference("messages");
 
     private static class ViewHolder {
+        TextView textMessageDate;
         TextView textMessageAuthor;
         TextView textMessageText;
         ImageView edit;
@@ -72,6 +73,7 @@ public class MessageAdapter extends ArrayAdapter<MyMessage> implements View.OnCl
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_item, parent, false);
+            viewHolder.textMessageDate = (TextView) convertView.findViewById(R.id.date);
             viewHolder.textMessageAuthor = (TextView) convertView.findViewById(R.id.name);
             viewHolder.textMessageText = (TextView) convertView.findViewById(R.id.day_hour);
             viewHolder.edit = (ImageView) convertView.findViewById(R.id.item_edit);
@@ -89,7 +91,7 @@ public class MessageAdapter extends ArrayAdapter<MyMessage> implements View.OnCl
             result=convertView;
         }
 
-
+        viewHolder.textMessageDate.setText(dataModel.getMsgDate());
         viewHolder.textMessageAuthor.setText(dataModel.getMsgAuthor());
         viewHolder.textMessageText.setText(dataModel.getMsgText());
         viewHolder.edit.setOnClickListener(this);

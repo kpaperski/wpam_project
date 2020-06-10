@@ -206,7 +206,7 @@ public class EditLessonsFragment extends Fragment {
 
         // Initializing an ArrayAdapter
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                Objects.requireNonNull(getContext()),R.layout.support_simple_spinner_dropdown_item,daysList){
+                getContext(),R.layout.support_simple_spinner_dropdown_item,daysList){
             @Override
             public boolean isEnabled(int position){
                 if(position == 0)

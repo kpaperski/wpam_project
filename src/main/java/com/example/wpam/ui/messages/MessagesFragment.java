@@ -99,8 +99,10 @@ public class MessagesFragment extends Fragment {
                         messagesList.add(myMessage);
                     }
                     Collections.sort(messagesList);
-                    messageAdapter = new MessageAdapter(messagesList, userEmail, userName, getContext());
-                    listView.setAdapter(messageAdapter);
+                    if (getActivity()!=null) {
+                        messageAdapter = new MessageAdapter(messagesList, userEmail, userName, getContext());
+                        listView.setAdapter(messageAdapter);
+                    }
                 }
             }
             @Override

@@ -74,8 +74,10 @@ public class StudentListMessagesFragment extends Fragment {
                     if (!user.getUsrRole().equals("teacher"))
                         usersList.add(user);
                 }
-                userAdapter = new UsersMarksAdapter(usersList, Consts.TEACHER_EMAIL, getContext());
-                listView.setAdapter(userAdapter);
+                if (getActivity()!=null) {
+                    userAdapter = new UsersMarksAdapter(usersList, Consts.TEACHER_EMAIL, getContext());
+                    listView.setAdapter(userAdapter);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

@@ -8,6 +8,7 @@ public class Mark implements Comparable<Mark> {
     private String markMaxPoints;
     private String markPercent;
     private String markDetails;
+    private String markDate;
     private String markTime;
 
     public Mark() {
@@ -22,6 +23,7 @@ public class Mark implements Comparable<Mark> {
         this.markPercent = markPercent;
         this.markDetails = markDetails;
         this.markTime = markTime;
+        this.markDate = TimeFunction.getDate();
     }
 
     public String getMarkId() {
@@ -54,6 +56,10 @@ public class Mark implements Comparable<Mark> {
 
     public String getMarkTime() {
         return markTime;
+    }
+
+    public String getMarkDate() {
+        return markDate;
     }
 
     @Override

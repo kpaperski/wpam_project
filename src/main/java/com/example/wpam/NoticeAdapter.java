@@ -32,6 +32,7 @@ public class NoticeAdapter extends ArrayAdapter<Notice> implements View.OnClickL
     private DatabaseReference databaseNotice = FirebaseDatabase.getInstance().getReference("notices");
 
     private static class ViewHolder {
+        TextView textNoticeDate;
         TextView textNoticeName;
         TextView textNoticeText;
         ImageView edit;
@@ -79,6 +80,7 @@ public class NoticeAdapter extends ArrayAdapter<Notice> implements View.OnClickL
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_item, parent, false);
+            viewHolder.textNoticeDate = (TextView) convertView.findViewById(R.id.date);
             viewHolder.textNoticeName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.textNoticeText = (TextView) convertView.findViewById(R.id.day_hour);
             viewHolder.edit = (ImageView) convertView.findViewById(R.id.item_edit);
@@ -96,7 +98,7 @@ public class NoticeAdapter extends ArrayAdapter<Notice> implements View.OnClickL
             result=convertView;
         }
 
-
+        viewHolder.textNoticeDate.setText(dataModel.getNoticeDate());
         viewHolder.textNoticeName.setText(dataModel.getNoticeName());
         viewHolder.textNoticeText.setText(dataModel.getNoticeText());
         viewHolder.edit.setOnClickListener(this);
@@ -153,8 +155,7 @@ public class NoticeAdapter extends ArrayAdapter<Notice> implements View.OnClickL
     }
 
     private boolean updateNotice(String id, String name, String text){
-        String time = TimeFunction.getTime();
-        Notice notice = new Notice(id, name, text, time);
+        Notice notice = new Notice(id, name, text);
         databaseNotice.child(id).setValue(notice);
         return true;
     }
